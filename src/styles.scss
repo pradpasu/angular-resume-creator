@@ -1,0 +1,40 @@
+/* You can add global styles to this file, and also import other style files */
+:host {
+    font-family: "Muli";
+    // font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Muli";
+}
+
+@page {
+    page-break-before: auto;
+    page-break-after: auto; 
+    margin: 5mm 5mm 5mm 3.4mm;
+    border: 0.5px solid lightblue;
+    -webkit-print-color-adjust: exact; 
+}
+
+@media print {
+    #myResume {
+        page-break-before: auto; 
+        page-break-after: auto;
+    }
+}
+/*
+@page {
+    page-break-before: auto;
+    page-break-after: auto;
+    padding: 20rem;
+}
+
+@media print {
+    #myResume {
+        display: block;
+        page-break-before: auto; 
+        // page-break-inside: avoid;
+        page-break-after: auto;
+        margin: 0mm;
+    }
+    @page{
+        margin: 3mm 5mm 5mm 3.4mm;
+    }
+}
+*/

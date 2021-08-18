@@ -1,0 +1,117 @@
+:host{
+    font-family: "Muli";
+    .main-container {
+        -webkit-print-color-adjust: exact; 
+        // border: 0.5px solid lightblue;
+        width: 220mm;
+        // height: 319mm;
+        // padding: 1rem;
+
+        .header{
+        
+            .header-divider{
+                color: darkgrey;
+            }
+            
+            .title{
+                margin: 0;
+            }
+
+            .subtitle{
+                margin: 0;
+                color: rgb(124, 108, 108);
+            }
+
+            .personal-info-chips-row{
+                .personal-info-chip{
+                    background: aliceblue;
+                    .link{
+                        text-decoration: underline;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+
+        .content{
+            margin-top: 0.6rem;
+            
+            .block-display{
+                display: block !important;
+            }
+            .content-divider{
+                color: darkgrey;
+            }
+
+            .content-section-title{
+                margin: 0;
+                color: steelblue;
+            }
+
+            .content-section-sub-info{
+                margin: 0;
+            }
+
+            .work-experience-item__project{
+                font-weight: bold;
+                color: dimgrey;
+            }
+
+            .work-experience-item__duration{
+                font-weight: bold;
+                color: darkgray;
+            }
+
+            .work-experience-item__keypoint{
+                padding-left: 0.2rem;
+                font-size: 90%; 
+                display: block !important;
+                .project-key-point {
+                  height: fit-content;  
+                  page-break-inside: avoid !important;
+                }
+            }
+
+            .common-divider{
+                color: dimgrey;
+            }
+
+            .skillset-title{
+                font-weight: bold;
+                color: dimgrey;
+            }
+
+            .skillset-chip-list::ng-deep{
+                .mat-chip-list-wrapper{
+                    margin-left: 0;
+                }
+            }
+
+            .skill-chip{
+                background: skyblue;
+                font-size: 80%;
+                margin: 2px;
+                padding: 1px 10px;
+            }
+
+            .achievement-arrow{
+                width: 10px;
+                font-size: 1.2rem;
+            }
+            .project-point-arrow{
+                width: 10px;
+                height: 10px;
+                font-size: 1.2rem;
+            }
+            .education-title{
+                font-weight: bold;
+            }
+            .education-sub-title{
+                color: dimgrey;
+            }
+            .education-score{
+                font-style: italic;
+            }
+        }
+    }
+}

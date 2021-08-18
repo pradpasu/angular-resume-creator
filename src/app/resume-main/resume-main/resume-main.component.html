@@ -1,0 +1,125 @@
+<!-- <button (click)="print()">Print</button> -->
+<div class="main-container" id="myResume" #myResume>
+    <div class="header" fxLayout="column" fxLayoutGap="1rem" fxLayoutAlign="space-around none">
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+            <h1 class="title">{{myName}}</h1>
+            <h3 class="subtitle">{{myDesignation}} ({{myRole}})</h3>
+        </div>
+        <mat-chip-list *ngIf="personalInfoChipItems && personalInfoChipItems.length > 0"
+            class="personal-info-chips-row" fxLayout="row" fxLayoutGap="1rem">
+            <mat-chip *ngFor="let personalInfoChipItem of personalInfoChipItems" class="personal-info-chip">
+                <ng-container *ngTemplateOutlet="personalInfoChipTemplate;context:{personalInfoChipItem: personalInfoChipItem}"></ng-container>
+            </mat-chip>
+        </mat-chip-list>
+        <div class="header-divider">
+            <mat-divider></mat-divider>
+        </div>
+    </div>
+    <div fxLayout="row" fxLayoutGap="0.5rem" class="content">
+        <div fxFlex="68" fxLayout="column" fxLayoutGap="0.4rem" class="block-display">
+            <div fxLayout="row" fxLayoutAlign="space-between center">
+                <h3 class="content-section-title">Work Experience</h3>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="space-between center">
+                <h4 class="content-section-sub-info">{{myDomain}}</h4>
+                <h4 class="content-section-sub-info">{{myCompanyAndExperience}}</h4>
+            </div>
+            <div *ngIf="workExperienceItems && workExperienceItems.length > 0" >
+                <div fxLayout="column" fxLayoutGap="0.6rem" class="block-display">
+                    <div *ngFor="let workExperienceItem of workExperienceItems" fxLayout="column" fxLayoutGap="0.3rem">
+                        <div class="work-experience-item-header-row" fxLayout="row" fxLayoutGap="space-between none">
+                            <div fxFlex="6"><mat-icon>{{workExperienceItem.icon}}</mat-icon></div>
+                            <div fxFlex class="work-experience-item__project">{{workExperienceItem.project}}</div>
+                            <div class="work-experience-item__duration">{{workExperienceItem.duration}}</div>
+                        </div>
+                        <div class="work-experience-item__keypoint" fxLayout="column" fxLayoutGap="0.3rem">
+                            <div *ngFor="let projectKeyPoints of workExperienceItem.keypoints" fxLayout="row" class="project-key-point">
+                                <div><mat-icon fxLayout="row" fxLayoutAlign="end none" class="project-point-arrow">arrow_right</mat-icon></div>
+                                <div>{{projectKeyPoints}}</div>
+                            </div>
+                        </div>
+                        <mat-divider class="common-divider" *ngIf="!workExperienceItem.lastSection"></mat-divider>
+                    </div>
+                </div>
+            </div>
+            <mat-divider class="common-divider"></mat-divider>
+            <h3 class="content-section-title">Soft Skills</h3>
+            <ng-container *ngIf="personalInfoItems && personalInfoItems.length > 0">
+                <!-- <div *ngFor="let personalInfoItem of personalInfoItems" fxLayout="column" class="project-key-point" >
+                    <div class="work-experience-item__keypoint" fxLayout="column" fxLayoutGap="0.3rem">
+                        <div fxLayout="row" class="project-key-point">
+                            <div><mat-icon  fxLayout="row" fxLayoutAlign="end none" class="project-point-arrow">arrow_right</mat-icon></div>
+                            <div>{{personalInfoItem}}</div>
+                        </div>
+                    </div>
+                </div> -->
+                <mat-chip-list class="skillset-chip-list">
+                    <mat-chip *ngFor="let personalInfoItem of personalInfoItems" class="skill-chip">
+                        {{personalInfoItem}}
+                    </mat-chip>
+                </mat-chip-list>
+            </ng-container>
+        </div>
+        <mat-divider class="content-divider" [vertical]=true></mat-divider>
+        <div fxLayout="column" fxLayoutGap="0.4rem" fxFlex="32" class="block-display">
+            <h3 class="content-section-title">Skills</h3>
+            <ng-container *ngIf="skillSets && skillSets.length > 0">
+                <div *ngFor="let skillSet of skillSets" fxLayout="column" fxLayoutGap="0.52rem">
+                    <div class="skillset-title">{{skillSet.type}}</div>
+                    <mat-chip-list class="skillset-chip-list">
+                        <mat-chip *ngFor="let skillSetItem of skillSet.skills" class="skill-chip">
+                            {{skillSetItem}}
+                        </mat-chip>
+                    </mat-chip-list>
+                </div>
+            </ng-container>
+            <mat-divider class="common-divider"></mat-divider>
+            <h3 class="content-section-title">Achievements</h3>
+            <div *ngIf="achievmentItems && achievmentItems.length > 0">
+                <div class="work-experience-item__keypoint" fxLayout="column" fxLayoutGap="0.3rem">
+                    <div *ngFor="let achievmentItem of achievmentItems" fxLayout="row" class="project-key-point">
+                        <div><mat-icon fxLayout="row" fxLayoutAlign="end none" class="achievement-arrow">arrow_right</mat-icon></div>
+                        <div>{{achievmentItem}}</div>
+                    </div>
+                </div>
+            </div>
+            <mat-divider class="common-divider"></mat-divider>
+            <h3 class="content-section-title">Education</h3>
+            <div *ngIf="educationItems && educationItems.length > 0">
+                <div class="work-experience-item__keypoint" fxLayout="column" fxLayoutGap="0.3rem" >
+                    <div *ngFor="let educationItem of educationItems" fxLayout="column" class="project-key-point" >
+                        <div fxLayout="row" fxLayoutAlign="space-between center" >
+                            <div class="education-title" >{{educationItem.education}}</div>
+                            <div class="education-score" >{{educationItem.score}}</div>
+                        </div>
+                        <div class="education-sub-title" >{{educationItem.place}}</div>
+                    </div>
+                </div>
+            </div>
+            <mat-divider class="common-divider"></mat-divider>
+            <h3 class="content-section-title">Hobbies</h3>
+            <ng-container *ngIf="aboutMeItems && aboutMeItems.length > 0">
+                <div class="work-experience-item__keypoint" fxLayout="column" fxLayoutGap="0.3rem">
+                    <div *ngFor="let aboutMeItem of aboutMeItems" fxLayout="row" class="project-key-point">
+                        <div><mat-icon fxLayout="row" fxLayoutAlign="end none" class="achievement-arrow">arrow_right</mat-icon></div>
+                        <div>{{aboutMeItem}}</div>
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+</div>
+
+<ng-template #personalInfoChipTemplate let-personalInfoChipItem="personalInfoChipItem">
+    <diV fxLayout="row" fxLayoutGap="5px">
+        <div fxLayout="row" fxLayoutAlign="center center" fxFlexAlign="center"><mat-icon>{{personalInfoChipItem.icon}}</mat-icon></div>
+        <div fxFlexAlign="center">
+            <a *ngIf="personalInfoChipItem.isLink" class="link" (click)="navigateToLink(personalInfoChipItem.value)">{{personalInfoChipItem.value}}</a>
+            <ng-container *ngIf="!personalInfoChipItem.isLink">{{personalInfoChipItem.value}}</ng-container>
+        </div>
+    </diV>
+</ng-template>
+
+
+
+

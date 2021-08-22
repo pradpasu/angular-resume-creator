@@ -10,11 +10,15 @@ import {MatChipsModule} from '@angular/material/chips';
 import {MatIconModule} from '@angular/material/icon';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatListModule} from '@angular/material/list';
+import {MatTableModule} from '@angular/material/table';
+import { MyTableComponent } from './my-table/my-table.component';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ResumeMainComponent
+    ResumeMainComponent,
+    MyTableComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +28,9 @@ import {MatListModule} from '@angular/material/list';
     MatChipsModule,
     MatIconModule,
     MatDividerModule,
-    MatListModule
+    MatListModule,
+    MatTableModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

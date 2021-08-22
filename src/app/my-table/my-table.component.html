@@ -1,0 +1,27 @@
+<div class="main-container" fxLayout="column" fxLayoutAlign="center center">
+  <div class="inner-table-container" fxLayout="column" fxLayoutGap="30px">
+    <div class="title-and-actions-container" fxLayout="row">
+      <div fxFlex="75" class="table-title">My College Template</div>
+      <div fxFlex="25" fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="10px">
+        <button mat-flat-button color="primary" (click)="toggleForm()">Add Row</button>
+        <button mat-flat-button color="primary">Export to CSV</button>
+      </div>
+    </div>
+    <div *ngIf="isFormShown" fxLayout="row" fxLayoutAlign="space-between center">
+      <div>Index</div>
+      <div>Name</div>
+      <div>Weight</div>
+      <div>Notation</div>
+    </div>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 college-template-table" 
+    *ngIf="isTableShown || isUserLoggedIn">
+        <ng-container *ngFor="let data of columnsMetaData" [matColumnDef]="data.key">
+          <th mat-header-cell *matHeaderCellDef> {{data.name}} </th>
+          <td mat-cell *matCellDef="let row"> {{getRowData(row, data)}} </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+</div>
+<table>
